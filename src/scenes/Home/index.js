@@ -7,65 +7,62 @@ import { Bulb, Collection } from '@/components/lifx'
 
 import './styles.css'
 
-const setGroups = lightList => {
-  console.log('Setting groups...')
-  const groups = []
-  lightList.forEach((v, i) => {
-    let name = v.group.name
-    if (!groups.includes(name)) groups.push(name)
-  })
-  return groups
-}
-const setLocations = lightList => {
-  console.log('Setting locations...')
-  const locations = []
-  lightList.forEach((v, i) => {
-    let name = v.location.name
-    if (!locations.includes(name)) locations.push(name)
-  })
-  return locations
+const setCollection = (bulbs, collectionName) => {
+  const collection = []
+
+  if (bulbs.length > 0) {
+    bulbs.forEach((v, i) => {
+      let name = v[collectionName].name
+      if (!collection.includes(name)) collection.push(name)
+    })
+  }
+
+  return collection
 }
 
 const enhance = compose(
   connect(state => {
     const data = getIn(state, ['lights', 'data'])
+
     return {
-      groups: setGroups(data),
-      lights: data,
-      locations: setLocations(data)
+      groups: setCollection(data, 'group') || [],
+      lights: data || [],
+      locations: setCollection(data, 'location') || []
     }
   }, {})
 )
 
 class Home extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      groups: this.props.groups || [],
-      locations: this.props.locations || []
-    }
-  }
-
   render() {
+    const { groups, lights, locations } = this.props
+
     return (
       <div className="Home">
         <p className="Home-intro">Control the bulbs from here!</p>
         <div className="Home-main">
-          <Collection collection={this.state.groups} name="Groups" />
-          <Collection collection={this.state.locations} name="Locations" />
-          <ul>
-            {this.props.lights.map((v, i) => {
-              return (
-                <li key={i}>
-                  <Bulb data={v} />
-                </li>
-              )
-            })}
-          </ul>
+          <div className="Home--collection">
+            {groups.length > 0 && (
+              <Collection collection={groups} name="Groups" />
+            )}
+            {locations.length > 0 && (
+              <Collection collection={locations} name="Locations" />
+            )}
+          </div>
+          <div className="Home--bulb">
+            {lights.length > 0 && (
+              <ul className="Home--bulb-list">
+                {lights.map((v, i) => (
+                  <li className="Home--bulb-list-item" key={i}>
+                    <Bulb bulb={v} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     )
   }
 }
+
 export default enhance(Home)

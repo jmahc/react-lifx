@@ -3,11 +3,11 @@ import Immutable from 'seamless-immutable'
 import createReducer from '%/services/createReducer'
 
 import { LIGHTS } from './actions'
-import lightsJson from './lights.json'
+// import lightsJson from './lights.json'
 
 const initialState = Immutable({
-  data: lightsJson,
-  // data: {},
+  // data: lightsJson,
+  data: {},
   fetching: false
 })
 

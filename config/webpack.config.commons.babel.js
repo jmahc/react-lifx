@@ -19,6 +19,7 @@ const commonsConfig = merge([
     'process.env.NODE_ENV',
     isProduction ? 'production' : 'development'
   ),
+  setFreeVariable('process.env.API_URL', process.env.API_URL),
   loadJavaScript({
     include: PATHS.app,
     exclude: /node_modules/,

@@ -6,13 +6,13 @@ import {
 
 import lights from '%/state/lights/reducer'
 
-import individual from '@/components/lifx/Bulb/state/reducer'
+// import individual from '@/components/lifx/Bulb/state/reducer'
 
 const createReducer = initialState => {
   const mainReducer = combineReducers({
     form,
     // Reducers go here!
-    individual,
+    // individual,
     lights,
     // Routing always goes last!
     routing

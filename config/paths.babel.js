@@ -12,7 +12,7 @@ const PATHS = {
   app: resolvePath('src'),
   assets: resolvePath('src/shared/assets'),
   babelConfig: require(resolvePath('config/babel.config.js')),
-  build: resolvePath('dist'),
+  build: resolvePath('docs'),
   devtoolModule: function(info) {
     return path.resolve(info.absoluteResourcePath)
   },

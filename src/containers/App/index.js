@@ -15,11 +15,9 @@ import './styles.css'
 const enhance = compose(withRouter, connect(null, { getLights }))
 
 class App extends PureComponent {
-  // Uncomment when it is time to continually call the API...
-  // componentWillMount() {
-  //   const { getLights } = this.props
-  //   getLights()
-  // }
+  componentWillMount() {
+    this.props.getLights()
+  }
 
   render() {
     return (
