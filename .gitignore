@@ -1,0 +1,32 @@
+# dependencies
+/node_modules
+
+# build folder (production)
+/dist
+
+# DLL folder (development)
+/dll
+
+# testing
+coverage/
+
+# local
+.env
+.env.*
+
+# misc
+.DS_Store
+/reports
+
+# npmjs.com
+npm-debug.log*
+package-lock.json
+
+# yarnpkg.com
+yarn.lock
+yarn-debug.log*
+yarn-error.log*
+.yarnclean
+
+# webpack stats
+config/stats/*

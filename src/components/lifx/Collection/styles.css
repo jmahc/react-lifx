@@ -1,0 +1,16 @@
+.Collection {
+  display: block;
+  float: left;
+}
+
+.Collection:last-child {
+  clear: both;
+}
+
+.Collection--list {
+  list-style: none;
+}
+
+.Collection--list-item {
+  list-style: none;
+}

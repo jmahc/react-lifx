@@ -1,0 +1,15 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "loose": true,
+        "spec": false,
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "comments": false
+}
