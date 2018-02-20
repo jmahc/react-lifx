@@ -23,8 +23,8 @@ class App extends PureComponent {
     return (
       <div className="App">
         <Switch key="app">
-          <PublicRoute exact path="/" component={Home} />
-          <Route component={NoMatchRoute} />
+          <PublicRoute path="/" component={Home} />
+          {/* <Route component={NoMatchRoute} /> */}
         </Switch>
       </div>
     )
